@@ -1,0 +1,39 @@
+package com.ecommerce.notificationservice.entity;
+
+
+import com.ecommerce.notificationservice.enums.NotificationType;
+import com.ecommerce.notificationservice.enums.Status;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+@Entity
+public class Notification {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @Enumerated(EnumType.STRING)
+    private NotificationType type;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    private String receiver;
+
+    private String subject;
+
+    private String message;
+
+    private LocalDateTime timestamp;
+
+}
