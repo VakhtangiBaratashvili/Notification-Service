@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 @Entity
+@Table(name = "notifications")
 public class Notification {
 
     @Id
