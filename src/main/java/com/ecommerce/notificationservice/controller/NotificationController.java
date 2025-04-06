@@ -1,6 +1,6 @@
 package com.ecommerce.notificationservice.controller;
 
-import com.ecommerce.notificationservice.dto.NotificationRequestDTO;
+import com.ecommerce.notificationservice.dto.request.NotificationRequestDTO;
 import com.ecommerce.notificationservice.service.NotificationService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

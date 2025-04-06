@@ -1,14 +1,16 @@
 package com.ecommerce.notificationservice.service;
 
-import com.ecommerce.notificationservice.dto.NotificationRequestDTO;
+import com.ecommerce.notificationservice.dto.request.NotificationRequestDTO;
 import com.ecommerce.notificationservice.entity.Notification;
 import com.ecommerce.notificationservice.enums.NotificationType;
 import com.ecommerce.notificationservice.enums.Status;
+import com.ecommerce.notificationservice.exception.ApiException;
 import com.ecommerce.notificationservice.mapper.NotificationObjectMapper;
 import com.ecommerce.notificationservice.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,7 @@ public class NotificationServiceImpl implements NotificationService {
             log.info("Notification saved successfully to database");
         } catch (Exception e) {
             log.error("Error saving notification to database: {}", e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            throw new ApiException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         try {
@@ -50,7 +52,7 @@ public class NotificationServiceImpl implements NotificationService {
             log.info("Email sent successfully");
         } catch (Exception e) {
             log.error("Error sending email: {}", e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            throw new ApiException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         try {
@@ -59,7 +61,7 @@ public class NotificationServiceImpl implements NotificationService {
             log.info("Notification status changed from {} to {} successfully to database", Status.PENDING, Status.SENT);
         } catch (Exception e) {
             log.error("Error changing notification status from {} to {} to database: {}", Status.PENDING, Status.SENT, e.getMessage());
-            throw new RuntimeException(e.getMessage());
+            throw new ApiException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

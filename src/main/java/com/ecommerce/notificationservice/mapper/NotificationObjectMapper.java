@@ -1,6 +1,6 @@
 package com.ecommerce.notificationservice.mapper;
 
-import com.ecommerce.notificationservice.dto.NotificationRequestDTO;
+import com.ecommerce.notificationservice.dto.request.NotificationRequestDTO;
 import com.ecommerce.notificationservice.entity.Notification;
 import com.ecommerce.notificationservice.enums.NotificationType;
 import com.ecommerce.notificationservice.enums.Status;
