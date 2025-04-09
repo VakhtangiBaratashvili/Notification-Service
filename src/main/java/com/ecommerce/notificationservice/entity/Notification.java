@@ -1,7 +1,6 @@
 package com.ecommerce.notificationservice.entity;
 
 
-import com.ecommerce.notificationservice.enums.NotificationType;
 import com.ecommerce.notificationservice.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,9 +21,6 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    private NotificationType type;
 
     @Enumerated(EnumType.STRING)
     private Status status;

@@ -2,7 +2,6 @@ package com.ecommerce.notificationservice.service;
 
 import com.ecommerce.notificationservice.dto.request.NotificationRequestDTO;
 import com.ecommerce.notificationservice.entity.Notification;
-import com.ecommerce.notificationservice.enums.NotificationType;
 import com.ecommerce.notificationservice.enums.Status;
 import com.ecommerce.notificationservice.exception.ApiException;
 import com.ecommerce.notificationservice.mapper.NotificationObjectMapper;
@@ -34,7 +33,7 @@ public class NotificationServiceImpl implements NotificationService {
 
         Notification notification;
         try {
-            notification = notificationObjectMapper.mapToNotification(notificationRequestDTO, NotificationType.EMAIL);
+            notification = notificationObjectMapper.mapToNotification(notificationRequestDTO);
             notificationRepository.save(notification);
             log.info("Notification saved successfully to database");
         } catch (Exception e) {
